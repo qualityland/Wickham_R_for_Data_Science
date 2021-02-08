@@ -20,6 +20,7 @@ ggplot(data = mpg) +
 
 
 ## Exercises
+
 # 1. Run ggplot(data = mpg). What do you see?
 ggplot(data = mpg)
 # an empty coodinate system without any layers.
@@ -96,3 +97,30 @@ ggplot(dat, aes(x, y)) +
   geom_point(aes(shape = p), size = 5, fill = "red") +
   scale_shape_identity() +
   theme_void()
+
+
+## Excercises
+
+# 1. What's done wrong with this code? Why are the points not blue?
+ggplot(data = mpg) +
+  geom_point(mapping = aes(x = displ, y = hwy, color = "blue"))
+# manual mapping must be done OUTSIDE of the aes() function
+ggplot(data = mpg) +
+  geom_point(mapping = aes(x = displ, y = hwy), color = "blue")
+
+# 2.  Which variables in 'mpg' are categorical?
+# manufacturer, model, trans, drv, fl, class
+#     Which variables are continuous?
+# displ, year, cty, hwy
+#     How can you see this information when you run 'mpg'?
+# data type below the column name.
+
+# 3. Map a contiuous variable to 'color', 'size' and 'shape'.
+#     How do these aesthetics behave differently for categorical versus
+#     continuous variables?
+
+
+# 4. What happens if you map the same variable to multiple aesthetics?
+
+# 5. What does the 'stroke' aesthetic do? What shapes does it work with?
+#     (Hint: use ?geom_point)
