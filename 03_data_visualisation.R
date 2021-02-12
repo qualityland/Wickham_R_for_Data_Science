@@ -2,7 +2,7 @@ library(tidyverse)
 
 
 #-------------------------------------------------------------------------------
-## Creating a Coordinate System and adding Layers
+## 3.2 Creating a Coordinate System and adding Layers
 #-------------------------------------------------------------------------------
 
 
@@ -56,7 +56,7 @@ ggplot(data = mpg) +
 
 
 #-------------------------------------------------------------------------------
-## Aesthetic Mappings
+## 3.3 Aesthetic Mappings
 #-------------------------------------------------------------------------------
 
 
@@ -150,3 +150,111 @@ ggplot(data = mpg) +
 ggplot(data = mpg) +
   geom_point(mapping = aes(x = displ, y = hwy, color = !(displ > 5 & hwy > 22)))
 # works fine
+
+
+#-------------------------------------------------------------------------------
+## 3.5 Facets
+#-------------------------------------------------------------------------------
+
+# add a 3rd variable using facet_wrap()
+ggplot(data = mpg) +
+  geom_point(mapping = aes(x = displ, y = hwy)) +
+  facet_wrap(~ class, nrow = 2)
+
+# add 3rd and 4th variable using facet_grid()
+ggplot(data = mpg) +
+  geom_point(mapping = aes(x = displ, y = hwy)) +
+  facet_grid(drv ~ cyl)
+
+# add 3rd variable using facet_grid()
+# (dot notation dropping rows)
+ggplot(data = mpg) +
+  geom_point(mapping = aes(x = displ, y = hwy)) +
+  facet_grid(.~cyl)
+
+# (dot notation dropping columns)
+ggplot(data = mpg) +
+  geom_point(mapping = aes(x = displ, y = hwy)) +
+  facet_grid(cyl~.)
+
+## 3.5.1 Excercises
+
+# 1. What happens if you facet on a continuous variable?
+ggplot(data = mpg) +
+  geom_point(mapping = aes(x = displ, y = hwy)) +
+  facet_wrap(~cty)
+#   A: creates a facet plot for each unique value of this variable.
+
+# 2. What do the empty cells in plot with 'facet_grid(drv ~ cyl)' mean?
+#     How do they relate to this plot?
+ggplot(data = mpg) +
+  geom_point(mapping = aes(x = drv, y = cyl))
+
+# 3. What plots does the following code make? What does . do?
+ggplot(data = mpg) + 
+  geom_point(mapping = aes(x = displ, y = hwy)) +
+  facet_grid(drv ~ .)
+# arranges plots for different drives (drv) in rows
+
+ggplot(data = mpg) + 
+  geom_point(mapping = aes(x = displ, y = hwy)) +
+  facet_grid(. ~ cyl)
+# arranges plots for different number of cylinders (cyl) in columns
+
+# 4. Take the first faceted plot in this section:
+ggplot(data = mpg) + 
+  geom_point(mapping = aes(x = displ, y = hwy)) + 
+  facet_wrap(~ class, nrow = 2)
+#   What are the advantages to using faceting instead of the color aesthetic?
+#   A: It's easier to see where a whole group is located. Less overplotting.
+#   What are the disadvantages?
+#   A: Difficult to do exact comparisons since different plots have to be
+#       compared.
+#   How might the balance change if you had a larger dataset?
+
+# 5. Read ?facet_wrap. What does nrow do?
+#     A: defines in how many rows the different facets should be split.
+#     What does ncol do?
+#     A: defines in how many columns the different facets are split.
+#     What other options control the layout of the individual panels?
+#     Why doesn’t facet_grid() have nrow and ncol arguments?
+
+# 6. When using facet_grid() you should usually put the variable with more
+#     unique levels in the columns. Why?
+#     A: It's more difficult to compare y values when they are more distant
+#         on the y axis.
+
+
+#-------------------------------------------------------------------------------
+## 6 Geometric Objects
+#-------------------------------------------------------------------------------
+
+
+
+## 3.6.1 Exercises
+
+# 1. What geom would you use to draw a line chart?
+#     A boxplot?
+#     A histogram?
+#     An area chart?
+
+# 2. Run this code in your head and predict what the output will look like.
+#     Then, run the code in R and check your predictions.
+ggplot(data = mpg, mapping = aes(x = displ, y = hwy, color = drv)) + 
+  geom_point() + 
+  geom_smooth(se = FALSE)
+
+# 3. What does show.legend = FALSE do? What happens if you remove it?
+#     Why do you think I used it earlier in the chapter?
+  
+# 4. What does the 'se' argument to geom_smooth() do?
+#     A: se=TRUE shows standard errors.
+  
+# 5. Will these two graphs look different? Why/why not?
+ggplot(data = mpg, mapping = aes(x = displ, y = hwy)) + 
+  geom_point() + 
+  geom_smooth()
+
+ggplot() + 
+  geom_point(data = mpg, mapping = aes(x = displ, y = hwy)) + 
+  geom_smooth(data = mpg, mapping = aes(x = displ, y = hwy))
