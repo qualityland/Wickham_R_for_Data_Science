@@ -19,7 +19,7 @@ ggplot(data = mpg) +
   geom_point(mapping = aes(x = displ, y = hwy))
 
 
-## Exercises
+## 3.2.4 Exercises
 
 # 1. Run ggplot(data = mpg). What do you see?
 ggplot(data = mpg)
@@ -99,7 +99,7 @@ ggplot(dat, aes(x, y)) +
   theme_void()
 
 
-## Excercises
+## 3.3.1 Excercises
 
 # 1. What's done wrong with this code? Why are the points not blue?
 ggplot(data = mpg) +
@@ -144,3 +144,9 @@ ggplot(data = mpg) +
   geom_point(mapping = aes(x = displ, y = hwy, stroke = cyl), shape = 21,
              fill = 'red', size = 4, color = 'white')
 #     A: 'stroke' surrounds the points with a yard or lift.
+
+# 6. What happens if you map an aesthetic to something other than a variable
+#     name ,like 'aes(color = displ < 5)'?
+ggplot(data = mpg) +
+  geom_point(mapping = aes(x = displ, y = hwy, color = !(displ > 5 & hwy > 22)))
+# works fine
