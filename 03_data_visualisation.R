@@ -229,8 +229,16 @@ ggplot(data = mpg) +
 ## 6 Geometric Objects
 #-------------------------------------------------------------------------------
 
+# scatter plot
+ggplot(data = mpg) +
+  geom_point(mapping = aes(x = displ, y = hwy))
 
+# smoothing data points to a line
+# displaying standard error as well
+ggplot(data = mpg) +
+  geom_smooth(mapping = aes(x = displ, y = hwy))
 
+ 
 ## 3.6.1 Exercises
 
 # 1. What geom would you use to draw a line chart?
