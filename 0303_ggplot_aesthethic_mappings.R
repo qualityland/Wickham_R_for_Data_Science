@@ -6,7 +6,7 @@ library(tidyverse)
 #-------------------------------------------------------------------------------
 
 
-# 3rd variable 'class', visualized with different colors
+# add a 3rd variable 'class' (visualized with different colors)
 ggplot(data = mpg) +
   geom_point(mapping = aes(x = displ, y = hwy, color = class))
 
@@ -17,7 +17,8 @@ ggplot(data = mpg) +
   geom_point(mapping = aes(x = displ, y = hwy, size = class))
 
 
-# a warning pops up when mapping 'class' to the transparency (alpha)
+# warning: ordered aesthetic 'alpha' (transparency) used for a discrete
+#          variable 'class'
 ggplot(data = mpg) +
   geom_point(mapping = aes(x = displ, y = hwy, alpha = class))
 
@@ -32,6 +33,7 @@ ggplot(data = mpg) +
 # (means: outside of aes() function)
 ggplot(data = mpg) +
   geom_point(mapping = aes(x = displ, y = hwy), color = "blue")
+
 
 # print all different shapes available in R
 dat <- tibble(p = c(0:25, 32:127),

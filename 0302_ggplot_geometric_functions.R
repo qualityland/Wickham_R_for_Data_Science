@@ -6,9 +6,11 @@ library(tidyverse)
 #-------------------------------------------------------------------------------
 
 
-# mpg comes with ggplot2
+# mpg (miles per gallon) comes with the ggplot2 package
 ggplot2::mpg
 
+
+## 3.2.3 A graphing template
 
 # ggplot(data = <DATA>) +
 #   <GEOM_FUNCTION>(mapping = aes(<MAPPINGS))
@@ -23,7 +25,7 @@ ggplot(data = mpg) +
 
 # 1. Run ggplot(data = mpg). What do you see?
 ggplot(data = mpg)
-# an empty coodinate system without any layers.
+# an empty coordinate system without any layers.
 
 
 # 2. How many rows are in mpg? How many columns?
@@ -52,5 +54,4 @@ ggplot(data = mpg) +
 ggplot(data = mpg) +
   geom_point(mapping = aes(x = drv, y = class))
 # Only shows which car type is available with which drives.
-# But many data points are overlapping.
-
+# Not useful because many data points are overlapping.
