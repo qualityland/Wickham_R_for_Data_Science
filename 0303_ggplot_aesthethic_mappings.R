@@ -49,10 +49,11 @@ ggplot(dat, aes(x, y)) +
 
 ## 3.3.1 Excercises
 
-# 1. What's done wrong with this code? Why are the points not blue?
+# 1.  Q: What's done wrong with this code? Why are the points not blue?
 ggplot(data = mpg) +
   geom_point(mapping = aes(x = displ, y = hwy, color = "blue"))
-# manual mapping must be done OUTSIDE of the aes() function
+
+#     A: Manual mapping must be done OUTSIDE of the aes() function
 ggplot(data = mpg) +
   geom_point(mapping = aes(x = displ, y = hwy), color = "blue")
 
@@ -61,7 +62,8 @@ ggplot(data = mpg) +
 #     Q: Which variables are continuous?
 #     A: displ, year, cty, hwy
 #     Q: How can you see this information when you run 'mpg'?
-#     A: The data type is visible right below the column name.
+#     A: The for a tibble the data type of a vaciable is visible right below
+#        the column name. For data frames use str(<data frame>).
 
 # 3. Map a continuous variable to 'color', 'size' and 'shape'.
 # color:
@@ -75,26 +77,27 @@ ggplot(data = mpg) +
   geom_point(mapping = aes(x = displ, y = hwy, shape = as.character(cyl)))
 #     Q: How do these aesthetics behave differently for categorical versus
 #         continuous variables?
-#     A: 'shape' raises an error using a continuous variable, but works when
-#         converted to a character as long as there are only few different
-#         values.
+#     A: For categorical data the legend shows a level for every category (as
+#         long as levels are available).
+#         For continuous data it shows only some levels (e.g. full numbers).
 
-# 4. What happens if you map the same variable to multiple aesthetics?
+# 4.  Q: What happens if you map the same variable to multiple aesthetics?
 ggplot(data = mpg) +
   geom_point(mapping = aes(x = displ, y = hwy, color = cty, size = cty))
 ggplot(data = mpg) +
   geom_point(mapping = aes(x = displ, y = hwy, color = cyl, shape = as.character(cyl)))
-#     A: Works - both aesthetics are modified.
+#     A: Data points vary in both aesthetics (e.g. color and size).
 
-# 5. What does the 'stroke' aesthetic do? What shapes does it work with?
-#     (Hint: use ?geom_point)
+# 5.  Q: What does the 'stroke' aesthetic do? What shapes does it work with?
+#       (Hint: use ?geom_point)
 ggplot(data = mpg) +
   geom_point(mapping = aes(x = displ, y = hwy, stroke = cyl), shape = 21,
              fill = 'red', size = 4, color = 'white')
 #     A: 'stroke' surrounds the points with a yard or lift.
 
-# 6. What happens if you map an aesthetic to something other than a variable
-#     name ,like 'aes(color = displ < 5)'?
+# 6.  Q: What happens if you map an aesthetic to something other than a variable
+#       name ,like 'aes(color = displ < 5)'?
 ggplot(data = mpg) +
   geom_point(mapping = aes(x = displ, y = hwy, color = !(displ > 5 & hwy > 22)))
-# works fine
+#     A: The expression is shown in the legend and both values (TRUE or FALSE)
+#       are displayed in different level of the aesthetic.

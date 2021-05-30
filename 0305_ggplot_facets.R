@@ -5,6 +5,10 @@ library(tidyverse)
 ## 3.5 Facets
 #-------------------------------------------------------------------------------
 
+# add an additional variable with
+#   - aesthetics (each level of the aesthetic mapped to a value/range)
+#   - facets (subplots that each display one subset of the data)
+
 # add a 3rd variable using facet_wrap()
 ggplot(data = mpg) +
   geom_point(mapping = aes(x = displ, y = hwy)) +
