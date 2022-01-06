@@ -44,6 +44,7 @@ ggplot(data = mpg) +
   geom_point(mapping = aes(x = displ, y = hwy)) +
   facet_grid(cyl~.)
 
+
 ## 3.5.1 Excercises
 
 # 1. What happens if you facet on a continuous variable?
