@@ -91,8 +91,8 @@ ggplot(data = mpg) +
 #   Q: What are the disadvantages?
 #   A: Difficult to do exact comparisons since different plots have to be
 #       compared.
-#   Q: How might the balance change if you had a larger dataset?
-#   A: Especially on a large dataset facetting will be valueable, while
+#   Q: How might the balance change if you had a larger data set?
+#   A: Especially on a large data set faceting will be valuable, while
 #       e.g. different colors will lead to a big cloud of differently colored
 #       data points.
 
@@ -105,8 +105,8 @@ ggplot(data = mpg) +
 
 #     Q: What other options control the layout of the individual panels?
 #     Q: Why doesn’t facet_grid() have nrow and ncol arguments?
-#     A: Because number of rows and columns is defined by the data (
-#         observations that fit 3rd and 4th variable).
+#     A: Because number of rows and columns is defined by the data
+#        (observations that fit 3rd and 4th variable).
 
 # 6. Q: When using facet_grid() you should usually put the variable with more
 #     unique levels in the columns. Why?

@@ -55,3 +55,6 @@ ggplot(data = mpg) +
   geom_point(mapping = aes(x = drv, y = class))
 # Only shows which car type is available with which drives.
 # Not useful because many data points are overlapping.
+# better:
+ggplot(data = mpg) +
+  geom_jitter(mapping = aes(x = drv, y = class))

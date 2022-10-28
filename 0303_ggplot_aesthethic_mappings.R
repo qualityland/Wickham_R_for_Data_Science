@@ -62,7 +62,7 @@ ggplot(data = mpg) +
 #     Q: Which variables are continuous?
 #     A: displ, year, cty, hwy
 #     Q: How can you see this information when you run 'mpg'?
-#     A: The for a tibble the data type of a vaciable is visible right below
+#     A: Tibble: data type of each variable is visible right below
 #        the column name. For data frames use str(<data frame>).
 
 # 3. Map a continuous variable to 'color', 'size' and 'shape'.
